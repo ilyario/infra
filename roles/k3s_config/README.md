@@ -8,7 +8,9 @@ Role Variables
 --------------
 
 k3s_config_user_directory: "/home/ubuntu"
+
 k3s_config_directory: "{{ k3s_config_user_directory }}/.kube"
+
 k3s_config_path: "{{ k3s_config_directory }}/config"
 
 
