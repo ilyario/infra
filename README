@@ -1,2 +1,7 @@
 Personal infrastructure project
 
+
+Install dependencies:
+```
+ansible-galaxy install -r requirements.yml 
+```

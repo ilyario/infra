@@ -1,0 +1,24 @@
+---
+- name: Creates directory {{ k3s_config_directory }}
+  file:
+    path: "{{ k3s_config_directory }}"
+    state: directory
+
+- name: Copy k3s config with owner and permissions
+  copy:
+    src: /etc/rancher/k3s/k3s.yaml
+    remote_src: true
+    dest: "{{ k3s_config_path }}"
+    owner: ubuntu
+    group: ubuntu
+    mode: '0644'
+
+- name: customize /etc/environment
+  lineinfile:
+    dest: "/etc/environment"
+    state: present
+    regexp: "^{{ item.key }}="
+    line: "{{ item.key }}={{ item.value }}"
+  with_items:
+    - key: KUBECONFIG
+      value: "{{ k3s_config_path }}"

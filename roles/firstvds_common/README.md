@@ -1,7 +1,7 @@
 Role Name
 =========
 
-base role for configiration firsvds server 
+base role for configiration firsvds server
 
 Requirements
 ------------
