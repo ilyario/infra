@@ -1,0 +1,11 @@
+---
+# tasks file for firstvds_common
+
+- name: Create user tasks
+  include_tasks: "create_user_tasks.yml"
+
+- name: Update access tasks
+  include_tasks: "update_access_tasks.yml"
+
+- name: Install base software tasks
+  include_tasks: "install_base_software_tasks.yml"

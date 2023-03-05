@@ -1,0 +1,21 @@
+- name: Make sure we have a 'admin' group
+  group:
+    name: admin
+    state: present
+
+- name: Allow 'admin' group to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%admin'
+    line: '%admin ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+
+- name: Add sudoers users to admin group
+  user:
+    name: "{{ firstvds_common_username }}"
+    groups: admin
+    append: yes
+    shell: /bin/bash
+    state: present
+    createhome: yes

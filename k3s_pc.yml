@@ -1,0 +1,4 @@
+- hosts: k3s
+  become: yes
+  roles:
+  - { role: firstvds_common, tags: common }
